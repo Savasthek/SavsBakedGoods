@@ -1,0 +1,882 @@
+module SavsBakedGoods {
+    imports {
+        Base
+    }
+    /** QUESTIONS
+    What do Packaged and FoodType do?
+    If only WorldStaticModel is set we don't need StaticModel?
+    Also, there's a Tags attribute, should i tag stuff?
+
+
+    I want to figure out how to set once set of calories and stats when raw, and another when cooked.
+    Do i want to be using `RemoveNegativeEffectOnCooked = TRUE`, or changing the item? with `ReplaceOnCooked = *`?
+        Hopefully i won't have to use the `replaceoncooked` setting too much?
+    
+    CanBeDoneFromFloor -- can be done without picking up item
+    wtf is
+        AlwaysWelcomeGift
+        SurvivalGear
+        FoodType
+        Type
+
+    **/
+
+   /**
+    Initial 10 Breads To cut down on work
+    Sandwich Bread Dough
+     - uncraftable in base game for sandwich loafs
+    Hardtack
+     - 3 level multi-bake
+    Pretzel
+     - Baked Baking Soda
+    Sourdough
+     - Lame Decoration
+
+    Extra Things
+     - Horseshoe Sandwich
+        - Illinois Representation
+        - Cornbread Recipe
+    **/
+
+    item SandwichBreadDough
+    {
+        DisplayName = Sandwich Bread Dough,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+        IsCookable = TRUE,
+        DangerousUncooked = TRUE,
+        MinutesToCook = 20,
+		MinutesToBurn = 60,
+        ReplaceOnCooked = Bread;Roasting Pan,
+
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    recipe Prepare Sandwich Bread Dough
+    {
+	   RoastingPan,
+       BreadDough,
+
+       Result:SandwichBreadDough,
+       NeedToBeLearn:true,
+       Time:5.0,
+       Category:Cooking,
+    }
+
+    item SourdoughBoule
+    {
+        DisplayName = Sourdough Boule,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+        IsCookable = TRUE,
+        DangerousUncooked = TRUE,
+        MinutesToCook = 20,
+		MinutesToBurn = 60,
+
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+        StressChange = -5,
+		BoredomChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    item DecoratedSourdoughBoule
+    {
+        DisplayName = Decorated Sourdough Boule,
+        DisplayCategory = Food,
+        Type = Normal,
+        Weight = 0.1,
+
+        IsCookable = TRUE,
+        DangerousUncooked = TRUE,
+        MinutesToCook = 20,
+		MinutesToBurn = 60,
+        RemoveNegativeEffectOnCooked = TRUE,
+
+        HungerChange = -25,
+        UnhappyChange = -20,
+        FatigueChange = -10,
+        StressChange = -10,
+		BoredomChange = -10,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    recipe Make Sourdough Boule
+    {
+        keep Bowl,
+        Water=1,
+        [Recipe.GetItemTypes.Flour]=1,
+        Salt;1,
+        Yeast/SourdoughCulture,
+
+        Result:SourdoughBoule,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking5,
+    }
+
+    recipe Decorate Sourdough Boule
+    {
+        keep Scalpel/Lame,
+        SourdoughBoule,
+
+        Result:DecoratedSourdoughBoule,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking10,
+    }
+
+    /** Replace with a Real Skin **/
+    item Lame
+	{
+	    DisplayCategory = ToolWeapon,
+		MaxRange	=	0.8,
+		WeaponSprite	=	Scalpel,
+		MinAngle	=	0.65,
+		Type	=	Weapon,
+		MinimumSwingTime	=	2,
+		KnockBackOnNoDeath	=	FALSE,
+		SwingAmountBeforeImpact	=	0.02,
+		Categories	=	SmallBlade,
+		ConditionLowerChanceOneIn	=	1,
+		Weight	=	0.3,
+		SplatNumber	=	2,
+		PushBackMod	=	0.3,
+		SubCategory	=	Stab,
+		AimingMod	=	0.8,
+		CloseKillMove = Jaw_Stab,
+		ConditionMax	=	5,
+		MaxHitCount	=	1,
+		IsAimedHandWeapon	=	TRUE,
+		DoorDamage	=	1,
+		SwingAnim	=	Stab,
+		DisplayName	=	Bread Lame,
+		MinRange	=	0.61,
+		SwingTime	=	2,
+		KnockdownMod	=	0,
+		SplatBloodOnNoDeath	=	FALSE,
+		Icon	=	Scalpel,
+		RunAnim	=	Run_Weapon2,
+        IdleAnim	=	Idle_Weapon2,
+        BreakSound  =   ScalpelBreak,
+        TreeDamage  =   0,
+        EnduranceMod = 0.5,
+        MetalValue = 8,
+        CriticalChance	=	10,
+        CritDmgMultiplier = 10,
+        MinDamage	=	0.1,
+        MaxDamage	=	0.4,
+		WeaponLength = 0.17,
+        DamageCategory = Slash,
+        DamageMakeHole = TRUE,
+        HitFloorSound	=	ScalpelHit,
+        ImpactSound	=	ScalpelHit,
+        DoorHitSound = ScalpelHit,
+		HitSound	=	ScalpelHit,
+		SwingSound = ScalpelSwing,
+		AttachmentType = Screwdriver,
+ 	}
+
+    item SourdoughStarter
+    {
+        DisplayName = Sourdough Starter,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+        HungerChange = -5,
+        UnhappyChange = 20,
+        DangerousUncooked = TRUE,
+
+        DaysTotallyRotten = 7,
+        DaysFresh = 1,
+        ReplaceOnRotten = SourdoughCulture,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 10,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    item SourdoughCulture
+    {
+        DisplayName = Sourdough Culture,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+        UseDelta = 0.01,
+
+        HungerChange = -5,
+        UnhappyChange = 20,
+
+        DaysTotallyRotten = 20,
+        DaysFresh = 19,
+        DangerousUncooked = TRUE,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    recipe Make Sourdough Starter
+    {
+        EmptyJar,
+        DishCloth,
+        Water=1,
+        [Recipe.GetItemTypes.Flour]=1,
+        Yeast,
+
+        Result:SourdoughStarter,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking10,
+    }
+
+    recipe Feed Sourdough Culture
+    {
+        SourdoughCulture,
+        Water=1,
+        [Recipe.GetItemTypes.Flour]=1,
+
+        Result:SourdoughCulture,
+        NeedToBeLearn:true,
+        Time:10,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking1,
+    }
+    
+    item HardTackDough
+    {
+        DisplayName = Hard Tack Dough,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+        IsCookable = TRUE,
+        DangerousUncooked = TRUE,
+        MinutesToCook = 20
+        ReplaceOnCooked = HardTack,
+
+        HungerChange = -5,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 20,
+        Proteins = 0,
+        Lipids = 0,
+        Calories = 50,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    item SoftenedHardTack
+    {
+        DisplayName = Softened Hard Tack,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.15,
+
+        IsCookable = TRUE,
+        MinutesToCook = 30
+        ReplaceOnCooked = HardTack,
+
+        HungerChange = -10,
+        ThirstChange = -5,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 3,
+        DaysFresh = 1,
+
+        Carbohydrates = 20,
+        Proteins = 2,
+        Lipids = 4,
+        Calories = 100,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    item HardTack
+    {
+        DisplayName = Hard Tack,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+        IsCookable = TRUE,
+        MinutesToCook = 50
+        ReplaceOnCooked = HarderTack,
+        EvolvedRecipe = Soup:5;Stew:5;Salad:5,
+
+        HungerChange = -9,
+        UnhappyChange = 1,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 15,
+        DaysFresh = 10,
+
+        Carbohydrates = 20,
+        Proteins = 2,
+        Lipids = 4,
+        Calories = 90,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    item HarderTack
+    {
+        DisplayName = Harder Tack,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+        IsCookable = TRUE,
+        MinutesToCook = 50
+        ReplaceOnCooked = HardestTack,
+
+        HungerChange = -8,
+        ThirstChange = 10,
+        UnhappyChange = 10,
+        FatigueChange = 5,
+
+        DaysTotallyRotten = 30,
+        DaysFresh = 25,
+
+        Carbohydrates = 20,
+        Proteins = 2,
+        Lipids = 4,
+        Calories = 80,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    item HardestTack
+    {
+        DisplayName = Hardest Tack,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+        IsCookable = TRUE,
+        MinutesToBurn = 100
+
+        HungerChange = -7,
+        ThirstChange = 20,
+        UnhappyChange = 20,
+        FatigueChange = 20,
+
+        DaysTotallyRotten = 100,
+        DaysFresh = 90,
+
+        Carbohydrates = 20,
+        Proteins = 2,
+        Lipids = 4,
+        Calories = 70,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    recipe Mix Hard Tack Dough
+    {
+        keep RollingPin,
+        keep Bowl,
+        keep DoughnutCutter,
+        Water=1,
+        [Recipe.GetItemTypes.Flour]=1,
+
+        Result:HardTackDough=6,
+        NeedToBeLearn:true,
+        Time:100,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking10,
+    }
+    
+    recipe Soften Hard Tack
+    {
+        HardTack/HarderTack/HardestTack
+        Water=1,
+
+        Result: SoftenedHardTack,
+        NeedToBeLearn:true,
+        Time:10,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.None,
+    }
+
+    item EggSalad
+    {
+        DisplayName = Egg Salad,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+        UseDelta = 0.01,
+
+        EvolvedRecipe = Sandwich:2;Sandwich Baguette:2;Burger:2;Salad:2;Taco:2;Burrito:2,
+
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    /** add pickle
+    add pepper **/
+    recipe Mix Egg Salad
+    {
+        keep Bowl,
+		[Recipe.GetItemTypes.SapphCookingEgg];10,
+        MayonnaiseFull:5;MayonnaiseHalf:5;
+        Salt;1,
+
+        Result:EggSalad,
+        NeedToBeLearn:true,
+        Time:10,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking10,
+    }
+    
+    item HorseshoeSandwich
+    {
+        DisplayName = Horseshoe Sandwich,
+        DisplayCategory = Food,
+        Type = Food,
+        FoodType = Bread
+        Weight = 0.1,
+
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    recipe Make Horseshoe Sandwich
+    {
+		destroy Plate/PlateBlue/PlateOrange/PlateFancy
+        BreadSlices=1,
+        Water=1,
+
+        Result:HorseshoeSandwich,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking10,
+    }
+
+    recipe Make Cornbread
+    {
+        keep Bowl,
+        Water=1,
+        Cornflour=1,
+        Salt;1,
+        Yeast,
+
+        Result:Cornbread,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking1000,
+    }
+
+    item Pretzel
+    {
+        DisplayName = Pretzel,
+        DisplayCategory = Food,
+        Type = Food,
+        FoodType = Bread
+        Weight = 0.1,
+
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    item PretzelDough
+    {
+        DisplayName = Pretzel Dough,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+		DangerousUncooked = TRUE,
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    item BakingTray_Pretzels
+    {
+        DisplayName = Boiled Pretzels on Baking Tray,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+        IsCookable = TRUE,
+        DangerousUncooked = TRUE,
+        MinutesToCook = 20,
+		MinutesToBurn = 60,
+        ReplaceOnCooked = BakingTray;Pretzel;Pretzel;Pretzel;Pretzel,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    recipe Make Pretzel Dough
+    {
+	   keep Bowl,
+       Water=1,
+       [Recipe.GetItemTypes.Flour]=1,
+       Salt;1,
+       Yeast,
+
+       Result:PretzelDough,
+       NeedToBeLearn:true,
+       Time:5.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.Cooking10,
+    }
+
+    recipe Boil Pretzel Dough
+    {
+        keep KitchenTongs/Fork/Chopsticks,
+		destroy BakingTray,
+        WaterPot=5,
+        PretzelDough,
+
+        Result: BakingTray_Pretzels,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Heat:-0.22,
+        Category:Cooking,
+        CanBeDoneFromFloor:True,
+        OnGiveXP:Recipe.OnGiveXP.Cooking10,
+    }
+
+    item Matzo
+    {
+        DisplayName = Matzo,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+        Count = 2,
+
+        IsCookable = TRUE,
+        DangerousUncooked = TRUE,
+        MinutesToCook = 20,
+		MinutesToBurn = 60,
+        RemoveNegativeEffectOnCooked = TRUE,
+
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    item MatzoFlour
+    {
+	    DisplayCategory = Food,
+		Weight = 1,
+		Type = Drainable,
+		UseWhileEquipped = FALSE,
+		UseDelta = 0.1,
+		DisplayName = Matzo Flour,
+		Icon = Flour,
+		WorldStaticModel = Flour,
+		Tags = Flour,	
+		/*EvolvedRecipe = Soup:1;Stew:1,
+		Spice = true,
+		EvolvedRecipeName = Carrot,
+		FoodType = NoExplicit,		
+		Tags = Flour:DrainableSpice,	*/
+    }
+
+    item MatzoBall
+    {
+        DisplayName = Matzo Ball,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+        Count = 6,
+
+        EvolvedRecipe = Soup:1;Stew:1,
+
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    recipe Make Matzo
+    {
+	   keep Bowl,
+       Water=1,
+       [Recipe.GetItemTypes.Flour]=1,
+       Salt;1,
+
+       Result:Matzo,
+       NeedToBeLearn:true,
+       Time:5.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.Cooking5,
+    }
+
+    /** only from cooked variant **/
+    recipe Grind into Matzo Flour
+    {
+        keep [Recipe.GetItemTypes.MortarPestle],
+        Matzo,
+
+        Result:MatzoFlour,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking5,
+    }
+
+    /** add matzo ball to soups **/
+    recipe Make Matzo Ball
+    {
+        keep Bowl,
+        Water=1,
+        MatzoFlour;5,
+        Basil/Chives/Cilantro/Oregano/Parsley/Rosemary/Sage/Thyme,
+
+        Result:MatzoBall,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking1,
+    }
+
+    item MilkBread
+    {
+        DisplayName = Milk Bread,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+        IsCookable = TRUE,
+        DangerousUncooked = TRUE,
+        MinutesToCook = 20,
+		MinutesToBurn = 60,
+        RemoveNegativeEffectOnCooked = TRUE,
+
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    /** add cooking process for this. **/
+    item Tangzhong
+        DisplayName = Tangzhong,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+        IsCookable = TRUE,
+        DangerousUncooked = TRUE,
+        MinutesToCook = 5,
+		MinutesToBurn = 10,
+
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    /** Add to baking pan circle **/
+    recipe Make Milk Bread
+    {
+	   keep Bowl,
+       Water=1,
+       [Recipe.GetItemTypes.Flour]=1,
+       Salt;1,
+       Yeast,
+       Tangzhong,
+
+       Result:MilkBread=4,
+       NeedToBeLearn:true,
+       Time:5.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.Cooking10,
+    }
+
+    /** use a saucepan **/
+    recipe Make Tangzhong
+    {
+	   keep Bowl,
+       Water=1,
+       [Recipe.GetItemTypes.Milk];1,
+       [Recipe.GetItemTypes.Flour]=1,
+
+       Result:Tangzhong,
+       NeedToBeLearn:true,
+       Time:5.0,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.Cooking2,
+    }
+}

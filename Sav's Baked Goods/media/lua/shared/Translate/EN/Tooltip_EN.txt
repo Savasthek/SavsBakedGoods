@@ -1,0 +1,4 @@
+Tooltip_EN = {
+--
+	Tooltip_item_InitialBreadBook = "Teaches Bread Recipies",
+} 	

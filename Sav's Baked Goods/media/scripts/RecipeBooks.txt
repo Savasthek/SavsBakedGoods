@@ -1,0 +1,151 @@
+module SavsBakedGoods {
+	imports {
+		Base,
+	}
+
+	item InitialBreadBook {
+		Weight = 1,
+		DisplayCategory = SkillBook,
+		NumberOfPages =5,
+		Type = Literature,
+		DisplayName = Flour Flour Flour Bread,
+		Icon = Book,
+		TeachedRecipes = Prepare Sandwich Bread Dough;Make Sourdough Starter;Feed Sourdough Culture;Mix Egg Salad;Make Horseshoe Sandwich;Make Sourdough Loaf;Decorate Sourdough Loaf;Mix Hard Tack Dough;Soften Hard Tack;Make Cornbread;Make Pretzel Dough;Boil Pretzel Dough;Make Matzo;Grind into Matzo Flour;Make Matzo Ball;Make Tangzhong;Make Milk Bread,
+		StaticModel = Book,
+		WorldStaticModel = BookClosedGround,
+		ReplaceOnUse = InitialBreadBook,
+		Tooltip = Tooltip_item_InitialBreadBook,
+	}
+
+	/**
+	item AmericanBreadBook {
+		Weight = 1,
+		DisplayCategory = SkillBook,
+		Type = Literature,
+		DisplayName = Flour Flour Flour Salt,
+		Icon = Book,
+		TeachedRecipes = Make Baguette Dough;Bake Baguette,
+		StaticModel = Book,
+		WorldStaticModel = BookClosedGround,
+		ReplaceOnUse = AmericanBreadBook,
+		Tooltip = Tooltip_item_MechanicMag1,
+	}
+
+	item AmericanSweetsBook {
+		Weight = 1,
+		DisplayCategory = SkillBook,
+		Type = Literature,
+		DisplayName = Sugar Sugar Sugar Sugar,
+		Icon = Book,
+		TeachedRecipes = Make Baguette Dough;Bake Baguette,
+		StaticModel = Book,
+		WorldStaticModel = BookClosedGround,
+		ReplaceOnUse = AmericanSweetsBook,
+		Tooltip = Tooltip_item_InitialBreadBook,
+	}
+
+	item FrenchBreadBook {
+		Weight = 1,
+		DisplayCategory = SkillBook,
+		Type = Literature,
+		DisplayName = Pain et Pâtisserie,
+		Icon = Book,
+		TeachedRecipes = Make Baguette Dough;Bake Baguette,
+		StaticModel = Book,
+		WorldStaticModel = BookClosedGround,
+		ReplaceOnUse = FrenchBreadBook,
+		Tooltip = Tooltip_item_InitialBreadBook,
+	}
+
+	item GermanBreadBook {
+		Weight = 1,
+		DisplayCategory = SkillBook,
+		Type = Literature,
+		DisplayName = Brot,
+		Icon = Book,
+		TeachedRecipes = Make Baguette Dough;Bake Baguette,
+		StaticModel = Book,
+		WorldStaticModel = BookClosedGround,
+		ReplaceOnUse = GermanBreadBook,
+		Tooltip = Tooltip_item_InitialBreadBook,
+	}
+
+	item BelgianBreadBook {
+		Weight = 1,
+		DisplayCategory = SkillBook,
+		Type = Literature,
+		DisplayName = Belgian Bread,
+		Icon = Book,
+		TeachedRecipes = Make Baguette Dough;Bake Baguette,
+		StaticModel = Book,
+		WorldStaticModel = BookClosedGround,
+		ReplaceOnUse = BelgianBreadBook,
+		Tooltip = Tooltip_item_InitialBreadBook,
+	}
+
+	item JapaneseBreadBook {
+		Weight = 1,
+		DisplayCategory = SkillBook,
+		Type = Literature,
+		DisplayName = Bread and Empire,
+		Icon = Book,
+		TeachedRecipes = Make Baguette Dough;Bake Baguette,
+		StaticModel = Book,
+		WorldStaticModel = BookClosedGround,
+		ReplaceOnUse = JapaneseBreadBook,
+		Tooltip = Tooltip_item_InitialBreadBook,
+	}
+
+	item JewishBreadBook {
+		Weight = 1,
+		DisplayCategory = SkillBook,
+		Type = Literature,
+		DisplayName = The Jewish Baker,
+		Icon = Book,
+		TeachedRecipes = Make Baguette Dough;Bake Baguette,
+		StaticModel = Book,
+		WorldStaticModel = BookClosedGround,
+		ReplaceOnUse = JewishBreadBook,
+		Tooltip = Tooltip_item_InitialBreadBook,
+	}
+
+	item ItalianBreadBook {
+		Weight = 1,
+		DisplayCategory = SkillBook,
+		Type = Literature,
+		DisplayName = Italian Bread,
+		Icon = Book,
+		TeachedRecipes = Make Baguette Dough;Bake Baguette,
+		StaticModel = Book,
+		WorldStaticModel = BookClosedGround,
+		ReplaceOnUse = ItalianBreadBook,
+		Tooltip = Tooltip_item_InitialBreadBook,
+	}
+
+	item BritishBreadBook {
+		Weight = 1,
+		DisplayCategory = SkillBook,
+		Type = Literature,
+		DisplayName = Bread and Empire,
+		Icon = Book,
+		TeachedRecipes = Make Baguette Dough;Bake Baguette,
+		StaticModel = Book,
+		WorldStaticModel = BookClosedGround,
+		ReplaceOnUse = BritishBreadBook,
+		Tooltip = Tooltip_item_InitialBreadBook,
+	}
+
+	item SpanishBreadBook {
+		Weight = 1,
+		DisplayCategory = SkillBook,
+		Type = Literature,
+		DisplayName = Spanish Bread,
+		Icon = Book,
+		TeachedRecipes = Make Baguette Dough;Bake Baguette,
+		StaticModel = Book,
+		WorldStaticModel = BookClosedGround,
+		ReplaceOnUse = SpanishBreadBook,
+		Tooltip = Tooltip_item_InitialBreadBook,
+	}
+	**/
+}
