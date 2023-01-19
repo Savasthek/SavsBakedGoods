@@ -19,6 +19,12 @@ module SavsBakedGoods {
         FoodType
         Type
 
+
+    Learned
+        Add type=drainable to items that get items, and a usedelta.
+        usedelta is a percentage of the item?
+        when used in a recipe, the number represented is a single `delta` worth of usage?
+
     **/
 
    /**
@@ -114,7 +120,7 @@ module SavsBakedGoods {
     {
         DisplayName = Decorated Sourdough Boule,
         DisplayCategory = Food,
-        Type = Normal,
+        Type = Food,
         Weight = 0.1,
 
         IsCookable = TRUE,
@@ -142,6 +148,7 @@ module SavsBakedGoods {
         WorldStaticModel = Bread,
     }
 
+    /** Limit this to just active culture in future**/
     recipe Make Sourdough Boule
     {
         keep Bowl,
@@ -249,9 +256,9 @@ module SavsBakedGoods {
     {
         DisplayName = Sourdough Culture,
         DisplayCategory = Food,
-        Type = Food,
-        Weight = 0.1,
-        UseDelta = 0.01,
+        Type = Drainable,
+        UseDelta = 0.2,
+        UseWhileEquipped = FALSE,
 
         HungerChange = -5,
         UnhappyChange = 20,
@@ -297,7 +304,20 @@ module SavsBakedGoods {
         Category:Cooking,
         OnGiveXP:Recipe.OnGiveXP.Cooking1,
     }
-    
+
+    /** add a drying time rot recipe **/
+    recipe Dry Sourdough Culture
+    {
+        SourdoughCulture;1,
+        keep SheetPaper2/DishCloth,
+
+        Result:Yeast,
+        NeedToBeLearn:true,
+        Time:10,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.None,
+    }
+
     item HardTackDough
     {
         DisplayName = Hard Tack Dough,
@@ -308,6 +328,7 @@ module SavsBakedGoods {
         IsCookable = TRUE,
         DangerousUncooked = TRUE,
         MinutesToCook = 20
+        MinutesToBurn = 40
         ReplaceOnCooked = HardTack,
 
         HungerChange = -5,
@@ -334,10 +355,6 @@ module SavsBakedGoods {
         Type = Food,
         Weight = 0.15,
 
-        IsCookable = TRUE,
-        MinutesToCook = 30
-        ReplaceOnCooked = HardTack,
-
         HungerChange = -10,
         ThirstChange = -5,
         FatigueChange = -5,
@@ -363,7 +380,8 @@ module SavsBakedGoods {
         Weight = 0.1,
 
         IsCookable = TRUE,
-        MinutesToCook = 50
+        MinutesToCook = 60
+        MinutesToBurn = 90
         ReplaceOnCooked = HarderTack,
         EvolvedRecipe = Soup:5;Stew:5;Salad:5,
 

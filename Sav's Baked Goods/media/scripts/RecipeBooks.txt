@@ -10,7 +10,7 @@ module SavsBakedGoods {
 		Type = Literature,
 		DisplayName = Flour Flour Flour Bread,
 		Icon = Book,
-		TeachedRecipes = Prepare Sandwich Bread Dough;Make Sourdough Starter;Feed Sourdough Culture;Mix Egg Salad;Make Horseshoe Sandwich;Make Sourdough Loaf;Decorate Sourdough Loaf;Mix Hard Tack Dough;Soften Hard Tack;Make Cornbread;Make Pretzel Dough;Boil Pretzel Dough;Make Matzo;Grind into Matzo Flour;Make Matzo Ball;Make Tangzhong;Make Milk Bread,
+		TeachedRecipes = Prepare Sandwich Bread Dough;Make Sourdough Boule;Decorate Sourdough Boule;Make Sourdough Starter;Feed Sourdough Culture;Dry Sourdough Culture;Mix Egg Salad;Make Horseshoe Sandwich;Make Sourdough Loaf;Decorate Sourdough Loaf;Mix Hard Tack Dough;Soften Hard Tack;Make Cornbread;Make Pretzel Dough;Boil Pretzel Dough;Make Matzo;Grind into Matzo Flour;Make Matzo Ball;Make Tangzhong;Make Milk Bread,
 		StaticModel = Book,
 		WorldStaticModel = BookClosedGround,
 		ReplaceOnUse = InitialBreadBook,
