@@ -87,7 +87,7 @@ module SavsBakedGoods {
 
     item Proofing_Sourdough
     {
-        DisplayName = Sourdough(Unproofed),
+        DisplayName = Sourdough Unproofed,
         DisplayCategory = Food,
         Type = Food,
         Weight = 0.1,
@@ -100,8 +100,8 @@ module SavsBakedGoods {
         StressChange = -5,
 		BoredomChange = -5,
 
-        DaysTotallyRotten = .2,
-        DaysFresh = .1,
+        DaysTotallyRotten = 2,
+        DaysFresh = 1,
         ReplaceOnRotten = SourdoughBoule;Bowl,
 
         Carbohydrates = 7,
@@ -312,7 +312,7 @@ module SavsBakedGoods {
         DishCloth,
         Water=1,
         [Recipe.GetItemTypes.Flour]=1,
-        Yeast/GrapeLeaves;4/Violets;4/Rosehips;4,
+        Violets/GrapeLeaves/Rosehips=4,
 
         Result:SourdoughStarter,
         NeedToBeLearn:true,
@@ -586,9 +586,9 @@ module SavsBakedGoods {
 
     recipe Make Horseshoe Sandwich
     {
-		destroy Plate/PlateBlue/PlateOrange/PlateFancy
+	    destroy Plate/PlateBlue/PlateOrange/PlateFancy
         MeatPatty,
-		[Recipe.GetItemTypes.SapphCookingCheese];10,
+	    [Recipe.GetItemTypes.SapphCookingCheese];10,
         HomemadeFries;40,
         BreadSlices=2,
 
@@ -763,13 +763,11 @@ module SavsBakedGoods {
 		Icon = Flour,
 		WorldStaticModel = Flour,
 		Tags = Flour,	
-		/**
-        EvolvedRecipe = Soup:1;Stew:1,
+		/*EvolvedRecipe = Soup:1;Stew:1,
 		Spice = true,
 		EvolvedRecipeName = Carrot,
 		FoodType = NoExplicit,		
-		Tags = Flour:DrainableSpice,
-        **/
+		Tags = Flour:DrainableSpice,*/
     }
 
     item MatzoBall
@@ -964,13 +962,12 @@ module SavsBakedGoods {
     /** add a roasting pan loaf version? **/
     recipe Take Milk Bread Rolls From Pan
     {
-	   BakingPan_MilkBread,
-
-       Result:MilkBread=4;BakingPan,
-       NeedToBeLearn:true,
-       Time:10,
-       Category:Cooking,
-       OnGiveXP:Recipe.OnGiveXP.None,
+        BakingPan_MilkBread,
+        Result:MilkBread=4;BakingPan,
+        NeedToBeLearn:true,
+        Time:10,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.None,
     }
 
     recipe Make Tangzhong
