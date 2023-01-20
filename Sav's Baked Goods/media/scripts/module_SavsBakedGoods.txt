@@ -85,11 +85,41 @@ module SavsBakedGoods {
        Category:Cooking,
     }
 
+    item Proofing_Sourdough
+    {
+        DisplayName = Sourdough(Unproofed),
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
+
+        DangerousUncooked = TRUE,
+
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+        StressChange = -5,
+		BoredomChange = -5,
+
+        DaysTotallyRotten = .2,
+        DaysFresh = .1,
+        ReplaceOnRotten = SourdoughBoule;Bowl,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 100,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
     item SourdoughBoule
     {
         DisplayName = Sourdough Boule,
         DisplayCategory = Food,
         Type = Food,
+        FoodType = Bread,
         Weight = 0.1,
 
         IsCookable = TRUE,
@@ -148,18 +178,17 @@ module SavsBakedGoods {
         WorldStaticModel = Bread,
     }
 
-    /** Limit this to just active culture in future**/
-    recipe Make Sourdough Boule
+    recipe Make Sourdough
     {
-        keep Bowl,
+        Bowl,
         Water=1,
         [Recipe.GetItemTypes.Flour]=1,
         Salt;1,
-        Yeast/SourdoughCulture,
+        SourdoughCulture;1,
 
-        Result:SourdoughBoule,
+        Result:Proofing_Sourdough,
         NeedToBeLearn:true,
-        Time:5.0,
+        Time:10,
         Category:Cooking,
         OnGiveXP:Recipe.OnGiveXP.Cooking5,
     }
@@ -283,11 +312,11 @@ module SavsBakedGoods {
         DishCloth,
         Water=1,
         [Recipe.GetItemTypes.Flour]=1,
-        Yeast,
+        Yeast/GrapeLeaves;4/Violets;4/Rosehips;4,
 
         Result:SourdoughStarter,
         NeedToBeLearn:true,
-        Time:5.0,
+        Time:10,
         Category:Cooking,
         OnGiveXP:Recipe.OnGiveXP.Cooking10,
     }
@@ -513,13 +542,14 @@ module SavsBakedGoods {
         WorldStaticModel = Bread,
     }
 
-    /** add pickle
-    add pepper **/
+    /** add pickle **/
     recipe Mix Egg Salad
     {
         keep Bowl,
 		[Recipe.GetItemTypes.SapphCookingEgg];10,
         MayonnaiseFull:5;MayonnaiseHalf:5;
+        Sugar;1,
+        Pepper;1,
         Salt;1,
 
         Result:EggSalad,
@@ -557,12 +587,14 @@ module SavsBakedGoods {
     recipe Make Horseshoe Sandwich
     {
 		destroy Plate/PlateBlue/PlateOrange/PlateFancy
-        BreadSlices=1,
-        Water=1,
+        MeatPatty,
+		[Recipe.GetItemTypes.SapphCookingCheese];10,
+        HomemadeFries;40,
+        BreadSlices=2,
 
         Result:HorseshoeSandwich,
         NeedToBeLearn:true,
-        Time:5.0,
+        Time:10,
         Category:Cooking,
         OnGiveXP:Recipe.OnGiveXP.Cooking10,
     }
@@ -731,11 +763,13 @@ module SavsBakedGoods {
 		Icon = Flour,
 		WorldStaticModel = Flour,
 		Tags = Flour,	
-		/*EvolvedRecipe = Soup:1;Stew:1,
+		/**
+        EvolvedRecipe = Soup:1;Stew:1,
 		Spice = true,
 		EvolvedRecipeName = Carrot,
 		FoodType = NoExplicit,		
-		Tags = Flour:DrainableSpice,	*/
+		Tags = Flour:DrainableSpice,
+        **/
     }
 
     item MatzoBall
@@ -744,7 +778,6 @@ module SavsBakedGoods {
         DisplayCategory = Food,
         Type = Food,
         Weight = 0.1,
-        Count = 6,
 
         EvolvedRecipe = Soup:1;Stew:1,
 
@@ -793,14 +826,14 @@ module SavsBakedGoods {
     }
 
     /** add matzo ball to soups **/
-    recipe Make Matzo Ball
+    recipe Make Matzo Balls
     {
         keep Bowl,
         Water=1,
         MatzoFlour;5,
         Basil/Chives/Cilantro/Oregano/Parsley/Rosemary/Sage/Thyme,
 
-        Result:MatzoBall,
+        Result:MatzoBall=6,
         NeedToBeLearn:true,
         Time:5.0,
         Category:Cooking,
@@ -812,17 +845,62 @@ module SavsBakedGoods {
         DisplayName = Milk Bread,
         DisplayCategory = Food,
         Type = Food,
+        FoodType = Bread,
+        Weight = 0.1,
+
+        HungerChange = -25,
+        UnhappyChange = -10,
+        FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = Bread,
+        StaticModel = Bread,
+        WorldStaticModel = Bread,
+    }
+
+    item BakingPan_MilkBread_Raw
+    {
+        DisplayName = Milk Bread In BakingPan,
+        DisplayCategory = Food,
+        Type = Food,
         Weight = 0.1,
 
         IsCookable = TRUE,
         DangerousUncooked = TRUE,
         MinutesToCook = 20,
 		MinutesToBurn = 60,
-        RemoveNegativeEffectOnCooked = TRUE,
+        ReplaceOnCooked = BakingPan_MilkBread,
 
         HungerChange = -25,
         UnhappyChange = -10,
         FatigueChange = -5,
+
+        DaysTotallyRotten = 6,
+        DaysFresh = 3,
+
+        Carbohydrates = 7,
+        Proteins = 19,
+        Lipids = 9,
+        Calories = 180,
+
+        Icon = BreadDough,
+        StaticModel = BreadDough,
+        WorldStaticModel = BreadDough,
+    }
+
+    item BakingPan_MilkBread
+    {
+        DisplayName = Milk Bread In BakingPan,
+        DisplayCategory = Food,
+        Type = Food,
+        Weight = 0.1,
 
         DaysTotallyRotten = 6,
         DaysFresh = 3,
@@ -866,30 +944,41 @@ module SavsBakedGoods {
         WorldStaticModel = Bread,
     }
 
-    /** Add to baking pan circle **/
-    recipe Make Milk Bread
+    recipe Prepare Milk Bread
     {
 	   keep Bowl,
+       BakingPan,
        Water=1,
-       [Recipe.GetItemTypes.Flour]=1,
+       Flour=1,
        Salt;1,
        Yeast,
        Tangzhong,
 
-       Result:MilkBread=4,
+       Result:BakingPan_MilkBread_Raw,
        NeedToBeLearn:true,
        Time:5.0,
        Category:Cooking,
        OnGiveXP:Recipe.OnGiveXP.Cooking10,
     }
 
-    /** use a saucepan **/
+    /** add a roasting pan loaf version? **/
+    recipe Take Milk Bread Rolls From Pan
+    {
+	   BakingPan_MilkBread,
+
+       Result:MilkBread=4;BakingPan,
+       NeedToBeLearn:true,
+       Time:10,
+       Category:Cooking,
+       OnGiveXP:Recipe.OnGiveXP.None,
+    }
+
     recipe Make Tangzhong
     {
-	   keep Bowl,
+	   Saucepan,
        Water=1,
        [Recipe.GetItemTypes.Milk];1,
-       [Recipe.GetItemTypes.Flour]=1,
+       Flour=1,
 
        Result:Tangzhong,
        NeedToBeLearn:true,
