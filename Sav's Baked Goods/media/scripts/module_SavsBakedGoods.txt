@@ -2,46 +2,26 @@ module SavsBakedGoods {
     imports {
         Base
     }
-    /** QUESTIONS
-    What do Packaged and FoodType do?
-    If only WorldStaticModel is set we don't need StaticModel?
-    Also, there's a Tags attribute, should i tag stuff?
 
+    /** QUESTIONS about the PZ code
+        What do Packaged and FoodType do?
+        If only WorldStaticModel is set we don't need StaticModel?
+        Also, there's a Tags attribute, what should i tag stuff?
 
-    I want to figure out how to set once set of calories and stats when raw, and another when cooked.
-    Do i want to be using `RemoveNegativeEffectOnCooked = TRUE`, or changing the item? with `ReplaceOnCooked = *`?
-        Hopefully i won't have to use the `replaceoncooked` setting too much?
-    
-    CanBeDoneFromFloor -- can be done without picking up item
-    wtf is
-        AlwaysWelcomeGift
-        SurvivalGear
-        FoodType
-        Type
+        I want to figure out how to set one set of calories and stats when raw, and another when cooked.
+        Do i want to be using `RemoveNegativeEffectOnCooked = TRUE`, or changing the item? with `ReplaceOnCooked = *`?
+        
+        what are
+            AlwaysWelcomeGift
+            SurvivalGear
+            FoodType
+            Type
 
-
-    Learned
-        Add type=drainable to items that get items, and a usedelta.
-        usedelta is a percentage of the item?
-        when used in a recipe, the number represented is a single `delta` worth of usage?
-
-    **/
-
-   /**
-    Initial 10 Breads To cut down on work
-    Sandwich Bread Dough
-     - uncraftable in base game for sandwich loafs
-    Hardtack
-     - 3 level multi-bake
-    Pretzel
-     - Baked Baking Soda
-    Sourdough
-     - Lame Decoration
-
-    Extra Things
-     - Horseshoe Sandwich
-        - Illinois Representation
-        - Cornbread Recipe
+        Learned
+            Add type=drainable to items that get items, and a usedelta.
+            usedelta is a percentage of the item?
+            when used in a recipe, the number represented is a single `delta` worth of usage?
+            CanBeDoneFromFloor -- can be done without picking up item
     **/
 
     item SandwichBreadDough
@@ -54,7 +34,7 @@ module SavsBakedGoods {
         IsCookable = TRUE,
         DangerousUncooked = TRUE,
         MinutesToCook = 20,
-		MinutesToBurn = 60,
+        MinutesToBurn = 60,
         ReplaceOnCooked = Bread;Roasting Pan,
 
         HungerChange = -25,
@@ -76,13 +56,13 @@ module SavsBakedGoods {
 
     recipe Prepare Sandwich Bread Dough
     {
-	   RoastingPan,
-       BreadDough,
+        RoastingPan,
+        BreadDough,
 
-       Result:SandwichBreadDough,
-       NeedToBeLearn:true,
-       Time:5.0,
-       Category:Cooking,
+        Result:SandwichBreadDough,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
     }
 
     item Proofing_Sourdough
@@ -98,7 +78,7 @@ module SavsBakedGoods {
         UnhappyChange = -10,
         FatigueChange = -5,
         StressChange = -5,
-		BoredomChange = -5,
+        BoredomChange = -5,
 
         DaysTotallyRotten = 1,
         DaysFresh = 1,
@@ -125,13 +105,13 @@ module SavsBakedGoods {
         IsCookable = TRUE,
         DangerousUncooked = TRUE,
         MinutesToCook = 20,
-		MinutesToBurn = 60,
+        MinutesToBurn = 60,
 
         HungerChange = -25,
         UnhappyChange = -10,
         FatigueChange = -5,
         StressChange = -5,
-		BoredomChange = -5,
+        BoredomChange = -5,
 
         DaysTotallyRotten = 6,
         DaysFresh = 3,
@@ -156,14 +136,14 @@ module SavsBakedGoods {
         IsCookable = TRUE,
         DangerousUncooked = TRUE,
         MinutesToCook = 20,
-		MinutesToBurn = 60,
+        MinutesToBurn = 60,
         RemoveNegativeEffectOnCooked = TRUE,
 
         HungerChange = -25,
         UnhappyChange = -20,
         FatigueChange = -10,
         StressChange = -10,
-		BoredomChange = -10,
+        BoredomChange = -10,
 
         DaysTotallyRotten = 6,
         DaysFresh = 3,
@@ -208,34 +188,34 @@ module SavsBakedGoods {
     /** Replace with a Real Skin **/
     item Lame
 	{
-	    DisplayCategory = ToolWeapon,
-		MaxRange	=	0.8,
-		WeaponSprite	=	Scalpel,
-		MinAngle	=	0.65,
-		Type	=	Weapon,
-		MinimumSwingTime	=	2,
-		KnockBackOnNoDeath	=	FALSE,
-		SwingAmountBeforeImpact	=	0.02,
-		Categories	=	SmallBlade,
-		ConditionLowerChanceOneIn	=	1,
-		Weight	=	0.3,
-		SplatNumber	=	2,
-		PushBackMod	=	0.3,
-		SubCategory	=	Stab,
-		AimingMod	=	0.8,
-		CloseKillMove = Jaw_Stab,
-		ConditionMax	=	5,
-		MaxHitCount	=	1,
-		IsAimedHandWeapon	=	TRUE,
-		DoorDamage	=	1,
-		SwingAnim	=	Stab,
-		DisplayName	=	Bread Lame,
-		MinRange	=	0.61,
-		SwingTime	=	2,
-		KnockdownMod	=	0,
-		SplatBloodOnNoDeath	=	FALSE,
-		Icon	=	Scalpel,
-		RunAnim	=	Run_Weapon2,
+        DisplayCategory = ToolWeapon,
+        MaxRange	=	0.8,
+        WeaponSprite	=	Scalpel,
+        MinAngle	=	0.65,
+        Type	=	Weapon,
+        MinimumSwingTime	=	2,
+        KnockBackOnNoDeath	=	FALSE,
+        SwingAmountBeforeImpact	=	0.02,
+        Categories	=	SmallBlade,
+        ConditionLowerChanceOneIn	=	1,
+        Weight	=	0.3,
+        SplatNumber	=	2,
+        PushBackMod	=	0.3,
+        SubCategory	=	Stab,
+        AimingMod	=	0.8,
+        CloseKillMove = Jaw_Stab,
+        ConditionMax	=	5,
+        MaxHitCount	=	1,
+        IsAimedHandWeapon	=	TRUE,
+        DoorDamage	=	1,
+        SwingAnim	=	Stab,
+        DisplayName	=	Bread Lame,
+        MinRange	=	0.61,
+        SwingTime	=	2,
+        KnockdownMod	=	0,
+        SplatBloodOnNoDeath	=	FALSE,
+        Icon	=	Scalpel,
+        RunAnim	=	Run_Weapon2,
         IdleAnim	=	Idle_Weapon2,
         BreakSound  =   ScalpelBreak,
         TreeDamage  =   0,
@@ -245,15 +225,15 @@ module SavsBakedGoods {
         CritDmgMultiplier = 10,
         MinDamage	=	0.1,
         MaxDamage	=	0.4,
-		WeaponLength = 0.17,
+        WeaponLength = 0.17,
         DamageCategory = Slash,
         DamageMakeHole = TRUE,
         HitFloorSound	=	ScalpelHit,
         ImpactSound	=	ScalpelHit,
         DoorHitSound = ScalpelHit,
-		HitSound	=	ScalpelHit,
-		SwingSound = ScalpelSwing,
-		AttachmentType = Screwdriver,
+        HitSound	=	ScalpelHit,
+        SwingSound = ScalpelSwing,
+        AttachmentType = Screwdriver,
  	}
 
     item SourdoughStarter
@@ -546,7 +526,7 @@ module SavsBakedGoods {
     recipe Mix Egg Salad
     {
         keep Bowl,
-		[Recipe.GetItemTypes.SapphCookingEgg];10,
+        [Recipe.GetItemTypes.SapphCookingEgg];10,
         MayonnaiseFull:5;MayonnaiseHalf:5;
         Sugar;1,
         Pepper;1,
@@ -586,9 +566,9 @@ module SavsBakedGoods {
 
     recipe Make Horseshoe Sandwich
     {
-	    destroy Plate/PlateBlue/PlateOrange/PlateFancy
+        destroy Plate/PlateBlue/PlateOrange/PlateFancy
         MeatPatty,
-	    [Recipe.GetItemTypes.SapphCookingCheese];10,
+        [Recipe.GetItemTypes.SapphCookingCheese];10,
         HomemadeFries;40,
         BreadSlices=2,
 
@@ -646,7 +626,7 @@ module SavsBakedGoods {
         Type = Food,
         Weight = 0.1,
 
-		DangerousUncooked = TRUE,
+        DangerousUncooked = TRUE,
         HungerChange = -25,
         UnhappyChange = -10,
         FatigueChange = -5,
@@ -674,7 +654,7 @@ module SavsBakedGoods {
         IsCookable = TRUE,
         DangerousUncooked = TRUE,
         MinutesToCook = 20,
-		MinutesToBurn = 60,
+        MinutesToBurn = 60,
         ReplaceOnCooked = BakingTray;Pretzel;Pretzel;Pretzel;Pretzel,
 
         DaysTotallyRotten = 6,
@@ -708,7 +688,7 @@ module SavsBakedGoods {
     recipe Boil Pretzel Dough
     {
         keep KitchenTongs/Fork/Chopsticks,
-		destroy BakingTray,
+        destroy BakingTray,
         WaterPot=5,
         PretzelDough,
 
@@ -732,7 +712,7 @@ module SavsBakedGoods {
         IsCookable = TRUE,
         DangerousUncooked = TRUE,
         MinutesToCook = 20,
-		MinutesToBurn = 60,
+        MinutesToBurn = 60,
         RemoveNegativeEffectOnCooked = TRUE,
 
         HungerChange = -25,
@@ -754,20 +734,20 @@ module SavsBakedGoods {
 
     item MatzoFlour
     {
-	    DisplayCategory = Food,
-		Weight = 1,
-		Type = Drainable,
-		UseWhileEquipped = FALSE,
-		UseDelta = 0.1,
-		DisplayName = Matzo Flour,
-		Icon = Flour,
-		WorldStaticModel = Flour,
-		Tags = Flour,	
-		/*EvolvedRecipe = Soup:1;Stew:1,
-		Spice = true,
-		EvolvedRecipeName = Carrot,
-		FoodType = NoExplicit,		
-		Tags = Flour:DrainableSpice,*/
+        DisplayCategory = Food,
+        Weight = 1,
+        Type = Drainable,
+        UseWhileEquipped = FALSE,
+        UseDelta = 0.1,
+        DisplayName = Matzo Flour,
+        Icon = Flour,
+        WorldStaticModel = Flour,
+        Tags = Flour,	
+        /*EvolvedRecipe = Soup:1;Stew:1,
+        Spice = true,
+        EvolvedRecipeName = Carrot,
+        FoodType = NoExplicit,		
+        Tags = Flour:DrainableSpice,*/
     }
 
     item MatzoBall
@@ -873,7 +853,7 @@ module SavsBakedGoods {
         IsCookable = TRUE,
         DangerousUncooked = TRUE,
         MinutesToCook = 20,
-		MinutesToBurn = 60,
+        MinutesToBurn = 60,
         ReplaceOnCooked = BakingPan_MilkBread,
 
         HungerChange = -25,

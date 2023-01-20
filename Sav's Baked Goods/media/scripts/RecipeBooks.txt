@@ -6,9 +6,9 @@ module SavsBakedGoods {
 	item InitialBreadBook {
 		Weight = 1,
 		DisplayCategory = SkillBook,
-		NumberOfPages =5,
+		NumberOfPages = 40,
 		Type = Literature,
-		DisplayName = Flour Flour Flour Bread,
+		DisplayName = Flour Flour Flour Salt,
 		Icon = Book,
 		TeachedRecipes = Prepare Sandwich Bread Dough;Mix Egg Salad;Make Horseshoe Sandwich;Make Cornbread;
 			Make Sourdough;Decorate Sourdough Boule;Make Sourdough Starter;Feed Sourdough Culture;Dry Sourdough Culture;

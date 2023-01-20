@@ -1,9 +1,0 @@
-module Base {
-	evolvedrecipe Baguette {
-		BaseItem:BaguetteDough,
-		MaxItems:2,
-		ResultItem:BaguetteDough,
-		Name:Add Seasoning,
-		CanAddSpicesEmpty:true,
-	}
-}
