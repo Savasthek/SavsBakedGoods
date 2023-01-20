@@ -87,7 +87,7 @@ module SavsBakedGoods {
 
     item Proofing_Sourdough
     {
-        DisplayName = Sourdough Unproofed,
+        DisplayName = Sourdough(Unproofed),
         DisplayCategory = Food,
         Type = Food,
         Weight = 0.1,
@@ -100,7 +100,7 @@ module SavsBakedGoods {
         StressChange = -5,
 		BoredomChange = -5,
 
-        DaysTotallyRotten = 2,
+        DaysTotallyRotten = 1,
         DaysFresh = 1,
         ReplaceOnRotten = SourdoughBoule;Bowl,
 
@@ -692,17 +692,17 @@ module SavsBakedGoods {
 
     recipe Make Pretzel Dough
     {
-	   keep Bowl,
-       Water=1,
-       [Recipe.GetItemTypes.Flour]=1,
-       Salt;1,
-       Yeast,
+        keep Bowl,
+        Water=1,
+        [Recipe.GetItemTypes.Flour]=1,
+        Salt;1,
+        Yeast,
 
-       Result:PretzelDough,
-       NeedToBeLearn:true,
-       Time:5.0,
-       Category:Cooking,
-       OnGiveXP:Recipe.OnGiveXP.Cooking10,
+        Result:PretzelDough,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking10,
     }
 
     recipe Boil Pretzel Dough
@@ -798,16 +798,16 @@ module SavsBakedGoods {
 
     recipe Make Matzo
     {
-	   keep Bowl,
-       Water=1,
-       [Recipe.GetItemTypes.Flour]=1,
-       Salt;1,
+        keep Bowl,
+        Water=1,
+        [Recipe.GetItemTypes.Flour]=1,
+        Salt;1,
 
-       Result:Matzo,
-       NeedToBeLearn:true,
-       Time:5.0,
-       Category:Cooking,
-       OnGiveXP:Recipe.OnGiveXP.Cooking5,
+        Result:Matzo,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking5,
     }
 
     /** only from cooked variant **/
@@ -923,7 +923,7 @@ module SavsBakedGoods {
         IsCookable = TRUE,
         DangerousUncooked = TRUE,
         MinutesToCook = 5,
-		MinutesToBurn = 10,
+        MinutesToBurn = 10,
 
         HungerChange = -25,
         UnhappyChange = -10,
@@ -944,19 +944,19 @@ module SavsBakedGoods {
 
     recipe Prepare Milk Bread
     {
-	   keep Bowl,
-       BakingPan,
-       Water=1,
-       Flour=1,
-       Salt;1,
-       Yeast,
-       Tangzhong,
+        keep Bowl,
+        BakingPan,
+        Water=1,
+        Flour=1,
+        Salt;1,
+        Yeast,
+        Tangzhong,
 
-       Result:BakingPan_MilkBread_Raw,
-       NeedToBeLearn:true,
-       Time:5.0,
-       Category:Cooking,
-       OnGiveXP:Recipe.OnGiveXP.Cooking10,
+        Result:BakingPan_MilkBread_Raw,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking10,
     }
 
     /** add a roasting pan loaf version? **/
@@ -972,15 +972,15 @@ module SavsBakedGoods {
 
     recipe Make Tangzhong
     {
-	   Saucepan,
-       Water=1,
-       [Recipe.GetItemTypes.Milk];1,
-       Flour=1,
+        Saucepan,
+        Water=1,
+        [Recipe.GetItemTypes.Milk];1,
+        Flour=1,
 
-       Result:Tangzhong,
-       NeedToBeLearn:true,
-       Time:5.0,
-       Category:Cooking,
-       OnGiveXP:Recipe.OnGiveXP.Cooking2,
+        Result:Tangzhong,
+        NeedToBeLearn:true,
+        Time:5.0,
+        Category:Cooking,
+        OnGiveXP:Recipe.OnGiveXP.Cooking2,
     }
 }

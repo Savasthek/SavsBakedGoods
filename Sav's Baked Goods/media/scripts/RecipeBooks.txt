@@ -10,7 +10,12 @@ module SavsBakedGoods {
 		Type = Literature,
 		DisplayName = Flour Flour Flour Bread,
 		Icon = Book,
-		TeachedRecipes = Prepare Sandwich Bread Dough;Mix Egg Salad;Make Horseshoe Sandwich;Make Cornbread;Make Sourdough;Decorate Sourdough Boule;Make Sourdough Starter;Feed Sourdough Culture;Dry Sourdough Culture;Mix Hard Tack Dough;Soften Hard Tack;Make Pretzel Dough;Boil Pretzel Dough;Make Matzo;Grind into Matzo Flour;Make Matzo Balls;Make Tangzhong;Prepare Milk Bread;Take Milk Bread Rolls From Pan,
+		TeachedRecipes = Prepare Sandwich Bread Dough;Mix Egg Salad;Make Horseshoe Sandwich;Make Cornbread;
+			Make Sourdough;Decorate Sourdough Boule;Make Sourdough Starter;Feed Sourdough Culture;Dry Sourdough Culture;
+			Mix Hard Tack Dough;Soften Hard Tack;
+			Make Pretzel Dough;Boil Pretzel Dough;
+			Make Matzo;Grind into Matzo Flour;Make Matzo Balls;
+			Make Tangzhong;Prepare Milk Bread;Take Milk Bread Rolls From Pan,
 		StaticModel = Book,
 		WorldStaticModel = BookClosedGround,
 		ReplaceOnUse = InitialBreadBook,
@@ -18,12 +23,6 @@ module SavsBakedGoods {
 	}
 
 	/**
-			Prepare Sandwich Bread Dough;Mix Egg Salad;Make Horseshoe Sandwich;Make Cornbread;
-			Make Sourdough;Decorate Sourdough Boule;Make Sourdough Starter;Feed Sourdough Culture;Dry Sourdough Culture;
-			Mix Hard Tack Dough;Soften Hard Tack;
-			Make Pretzel Dough;Boil Pretzel Dough;
-			Make Matzo;Grind into Matzo Flour;Make Matzo Balls;
-			Make Tangzhong;Prepare Milk Bread;Take Milk Bread Rolls From Pan,
 
 	item AmericanBreadBook {
 		Weight = 1,
